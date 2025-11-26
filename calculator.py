@@ -17,34 +17,32 @@ def on_load():
     while True:
         try:
             user_ans= int(input("Enter a number  ") ) #error handling should be if it's greater than the range raise invalid option
-            if 1 <= user_ans <= 4 :
-               pass
-            else:   
-                new_ans=int(input("Enter a number  ") )     
-                return("Inavlid number entered, please select a number on the list"),new_ans
-               
-                
+            if 1 <= user_ans <= 4 : 
+               return calculations(user_ans)
+            else:       
+                print("Invalid number entered, please select a number on the list")      
+                new_ans=int(input("Enter a number  ") ) #add in condtitional checker that checks if it is  adigit or not
         except ValueError:              #problem solve for changing the value after multiple wrong entries
                 new_ans=int(input("Enter a number  ") )     
                 return "Invalid charcater, please input a number",new_ans
                 
 def calculations(user_ans):
-    
     num1= float(input("Enter the first number"))
     num2= float(input("Enter the second number")) #cannot restict this to two numn=bers only they can enter as many numbers
     
+    #doing basic calculations seek to doing more complex calculations like an actual calculator
     if user_ans==1:
         return num1 + num2
     elif user_ans==2:
         return num1-num2
     elif user_ans==3:
         if num2==0:
-            num2=float(input("Enter a different number"))     #see if this is viable and we can add it to the above case
+            num2=float(input("Cannot divide by zero, enter a different number"))     #see if this is viable and we can add it to the above case
             raise ZeroDivisionError(num2)
         else:
             return num1/num2
     elif user_ans==4:
-        num1*num2
+        return num1*num2
         
     
  
